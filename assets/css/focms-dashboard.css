@@ -1,0 +1,749 @@
+/**
+ * FOCMS Dashboard - Mobile-first responsive styles
+ *
+ * Theme-independent. Uses high-specificity .focms-* class names to avoid
+ * fighting with theme styles.
+ *
+ * Color palette (commercial-product-grade, not childish):
+ *   --focms-bg          base background
+ *   --focms-surface     card backgrounds
+ *   --focms-text        primary text
+ *   --focms-muted       secondary text
+ *   --focms-border      subtle borders
+ *   --focms-accent      primary action color (navy - service academy vibe)
+ *   --focms-accent-2    secondary accent (gold - merit/excellence)
+ *   --focms-success     positive state
+ *   --focms-warning     attention state
+ *   --focms-danger      risk state
+ *
+ * Student portal flips to a friendlier palette (--focms-student-*).
+ */
+
+.focms-dashboard {
+    --focms-bg: #f5f7fa;
+    --focms-surface: #ffffff;
+    --focms-text: #1a2332;
+    --focms-muted: #5a6b80;
+    --focms-border: #d9dfe8;
+    --focms-accent: #1e3a5f;
+    --focms-accent-2: #c4933b;
+    --focms-success: #2d7a3e;
+    --focms-warning: #b8841d;
+    --focms-danger: #c33c3c;
+
+    --focms-radius: 8px;
+    --focms-spacing: 16px;
+    --focms-spacing-lg: 24px;
+
+    background: var(--focms-bg);
+    color: var(--focms-text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    min-height: 100vh;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.focms-dashboard *,
+.focms-dashboard *::before,
+.focms-dashboard *::after {
+    box-sizing: border-box;
+}
+
+/* Student portal palette - warmer, more energetic */
+.focms-student {
+    --focms-accent: #2864b8;
+    --focms-accent-2: #f2a93b;
+    --focms-bg: #f8fafc;
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+.focms-header {
+    background: var(--focms-accent);
+    color: #ffffff;
+    padding: var(--focms-spacing-lg) var(--focms-spacing);
+}
+
+.focms-header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.focms-student .focms-header {
+    background: linear-gradient(135deg, var(--focms-accent), #4a8dd8);
+}
+
+.focms-title {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.focms-subtitle {
+    margin: 0;
+    font-size: 15px;
+    opacity: 0.9;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   Tabs (family dashboard)
+   ========================================================================== */
+.focms-tabs {
+    background: var(--focms-surface);
+    border-bottom: 1px solid var(--focms-border);
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.focms-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.focms-tab {
+    color: var(--focms-muted);
+    display: inline-block;
+    flex-shrink: 0;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 20px;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.focms-tab:hover {
+    color: var(--focms-accent);
+}
+
+.focms-tab.is-active {
+    color: var(--focms-accent);
+    border-bottom-color: var(--focms-accent);
+}
+
+/* ==========================================================================
+   Main content
+   ========================================================================== */
+.focms-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--focms-spacing);
+}
+
+.focms-section {
+    background: var(--focms-surface);
+    border: 1px solid var(--focms-border);
+    border-radius: var(--focms-radius);
+    margin-bottom: var(--focms-spacing);
+    padding: var(--focms-spacing-lg);
+}
+
+.focms-section h2 {
+    color: var(--focms-text);
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 var(--focms-spacing) 0;
+}
+
+/* ==========================================================================
+   Banner (phase placeholders)
+   ========================================================================== */
+.focms-banner {
+    border-radius: var(--focms-radius);
+    margin-bottom: var(--focms-spacing);
+    padding: 12px 16px;
+    font-size: 14px;
+}
+
+.focms-banner--phase {
+    background: #fff8e1;
+    border-left: 4px solid var(--focms-warning);
+    color: #5a4515;
+}
+
+/* ==========================================================================
+   Status list
+   ========================================================================== */
+.focms-status-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.focms-status-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--focms-border);
+}
+
+.focms-status-list li:last-child {
+    border-bottom: none;
+}
+
+/* ==========================================================================
+   Record list
+   ========================================================================== */
+.focms-record-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.focms-record {
+    align-items: flex-start;
+    border-bottom: 1px solid var(--focms-border);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 0;
+}
+
+.focms-record:last-child {
+    border-bottom: none;
+}
+
+.focms-record-title {
+    font-weight: 500;
+}
+
+.focms-record-title a {
+    color: var(--focms-text);
+    text-decoration: none;
+}
+
+.focms-record-title a:hover {
+    color: var(--focms-accent);
+}
+
+.focms-record-meta {
+    color: var(--focms-muted);
+    font-size: 13px;
+}
+
+/* ==========================================================================
+   Count grid (records by category)
+   ========================================================================== */
+.focms-count-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.focms-count-card {
+    background: var(--focms-bg);
+    border-radius: var(--focms-radius);
+    padding: 14px;
+    text-align: center;
+}
+
+.focms-count-num {
+    color: var(--focms-accent);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.focms-count-label {
+    color: var(--focms-muted);
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* ==========================================================================
+   Student portal - hero
+   ========================================================================== */
+.focms-section--hero {
+    background: linear-gradient(135deg, #ffffff 0%, #eef4fc 100%);
+    border-color: var(--focms-accent);
+    text-align: center;
+}
+
+.focms-hero-headline {
+    color: var(--focms-accent);
+    font-size: 36px;
+    font-weight: 800;
+    margin: 0 0 12px 0;
+    line-height: 1.0;
+}
+
+.focms-hero-sub {
+    color: var(--focms-text);
+    font-size: 17px;
+    margin: 0;
+}
+
+/* ==========================================================================
+   Student portal - stat row
+   ========================================================================== */
+.focms-stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.focms-stat {
+    background: var(--focms-bg);
+    border-radius: var(--focms-radius);
+    padding: 14px 8px;
+    text-align: center;
+}
+
+.focms-stat-num {
+    color: var(--focms-accent);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.0;
+}
+
+.focms-stat-label {
+    color: var(--focms-muted);
+    font-size: 11px;
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   Student portal - feature preview
+   ========================================================================== */
+.focms-section--cta {
+    background: var(--focms-accent);
+    color: #ffffff;
+    border-color: var(--focms-accent);
+}
+
+.focms-section--cta h2 {
+    color: #ffffff;
+}
+
+.focms-feature-preview {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.focms-feature-preview li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+}
+
+.focms-feature-preview li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    color: var(--focms-accent-2);
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+.focms-muted {
+    color: var(--focms-muted);
+    font-size: 14px;
+}
+
+.focms-footer {
+    border-top: 1px solid var(--focms-border);
+    margin-top: var(--focms-spacing-lg);
+    padding: var(--focms-spacing);
+    text-align: center;
+}
+
+.focms-footer a {
+    color: var(--focms-accent);
+    text-decoration: none;
+}
+
+.focms-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Tablet (480px+)
+   ========================================================================== */
+@media (min-width: 480px) {
+    .focms-count-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .focms-record {
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/* ==========================================================================
+   Desktop (768px+)
+   ========================================================================== */
+@media (min-width: 768px) {
+    .focms-title {
+        font-size: 32px;
+    }
+    .focms-subtitle {
+        font-size: 17px;
+    }
+    .focms-header {
+        padding: 32px var(--focms-spacing-lg);
+    }
+    .focms-main {
+        padding: var(--focms-spacing-lg);
+    }
+    .focms-count-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .focms-hero-headline {
+        font-size: 48px;
+    }
+    .focms-stat-num {
+        font-size: 36px;
+    }
+}
+
+/* ==========================================================================
+   Large desktop (1024px+)
+   ========================================================================== */
+@media (min-width: 1024px) {
+    .focms-count-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+/* ==========================================================================
+   PHASE 3.2 - PULSE TAB WIDGETS
+   ========================================================================== */
+
+.focms-section-title {
+    align-items: center;
+    color: var(--focms-text);
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 17px;
+    font-weight: 600;
+    gap: 8px;
+    margin: 0 0 var(--focms-spacing) 0;
+}
+
+.focms-section-icon {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.focms-section-meta {
+    color: var(--focms-muted);
+    font-size: 13px;
+    font-weight: 400;
+    margin-left: auto;
+}
+
+.focms-empty {
+    background: var(--focms-bg);
+    border-radius: var(--focms-radius);
+    color: var(--focms-text);
+    margin: 0;
+    padding: 16px;
+}
+
+.focms-empty a {
+    color: var(--focms-accent);
+    text-decoration: none;
+}
+
+/* ----- Widget 1: Quick Stats ----- */
+.focms-stat-grid {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.focms-stat-card {
+    background: var(--focms-bg);
+    border-radius: var(--focms-radius);
+    padding: 16px 12px;
+    text-align: center;
+}
+
+.focms-stat-card--accent {
+    background: var(--focms-accent);
+    color: #fff;
+}
+
+.focms-stat-card--accent .focms-stat-num,
+.focms-stat-card--accent .focms-stat-label {
+    color: #fff;
+}
+
+.focms-stat-card .focms-stat-num {
+    color: var(--focms-accent);
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.focms-stat-card .focms-stat-num--sm {
+    font-size: 20px;
+}
+
+.focms-stat-card .focms-stat-num--xs {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+.focms-stat-card .focms-stat-label {
+    color: var(--focms-muted);
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+/* ----- Widget 2: Deadlines ----- */
+.focms-deadline-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.focms-deadline {
+    align-items: center;
+    border-left: 4px solid var(--focms-border);
+    border-radius: 4px;
+    display: flex;
+    gap: 14px;
+    margin-bottom: 10px;
+    padding: 12px 14px;
+    background: var(--focms-bg);
+}
+
+.focms-deadline:last-child {
+    margin-bottom: 0;
+}
+
+.focms-urgency-critical { border-left-color: var(--focms-danger); }
+.focms-urgency-high     { border-left-color: var(--focms-warning); }
+.focms-urgency-medium   { border-left-color: var(--focms-accent-2); }
+.focms-urgency-low      { border-left-color: var(--focms-muted); }
+
+.focms-deadline-days {
+    flex-shrink: 0;
+    line-height: 1;
+    min-width: 50px;
+    text-align: center;
+}
+
+.focms-deadline-num {
+    color: var(--focms-text);
+    display: block;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.focms-urgency-critical .focms-deadline-num { color: var(--focms-danger); }
+.focms-urgency-high     .focms-deadline-num { color: var(--focms-warning); }
+
+.focms-deadline-unit {
+    color: var(--focms-muted);
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-top: 2px;
+}
+
+.focms-deadline-body {
+    min-width: 0;
+}
+
+.focms-deadline-title {
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.focms-deadline-title a {
+    color: var(--focms-text);
+    text-decoration: none;
+}
+
+.focms-deadline-title a:hover {
+    color: var(--focms-accent);
+}
+
+.focms-deadline-meta {
+    color: var(--focms-muted);
+    font-size: 12px;
+}
+
+/* ----- Widget 3: Training Pulse ----- */
+.focms-training-summary {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    margin-bottom: 16px;
+}
+
+.focms-training-stat {
+    background: var(--focms-bg);
+    border-radius: var(--focms-radius);
+    padding: 14px 8px;
+    text-align: center;
+}
+
+.focms-training-num {
+    color: var(--focms-accent);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.focms-training-label {
+    color: var(--focms-muted);
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    margin-top: 4px;
+    text-transform: uppercase;
+}
+
+.focms-sparkline-wrap {
+    color: var(--focms-accent);
+}
+
+.focms-sparkline {
+    display: block;
+    height: 50px;
+    width: 100%;
+}
+
+.focms-sparkline-axis {
+    color: var(--focms-muted);
+    display: flex;
+    font-size: 11px;
+    justify-content: space-between;
+    margin-top: 4px;
+}
+
+/* ----- Widget 4: Active Goals ----- */
+.focms-goal-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.focms-goal {
+    border-bottom: 1px solid var(--focms-border);
+    padding: 12px 0;
+}
+
+.focms-goal:last-child {
+    border-bottom: none;
+}
+
+.focms-goal-header {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.focms-goal-title {
+    flex: 1;
+    font-weight: 500;
+    min-width: 0;
+}
+
+.focms-goal-title a {
+    color: var(--focms-text);
+    text-decoration: none;
+}
+
+.focms-goal-title a:hover {
+    color: var(--focms-accent);
+}
+
+.focms-goal-due {
+    color: var(--focms-muted);
+    flex-shrink: 0;
+    font-size: 13px;
+}
+
+.focms-overdue {
+    color: var(--focms-danger);
+    font-weight: 600;
+}
+
+.focms-progress {
+    background: var(--focms-border);
+    border-radius: 100px;
+    height: 6px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.focms-progress-bar {
+    background: var(--focms-accent);
+    border-radius: 100px;
+    height: 100%;
+    transition: width 0.4s ease;
+}
+
+/* ----- Banner variants ----- */
+.focms-feature-preview-light {
+    color: var(--focms-text);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.focms-feature-preview-light li {
+    padding: 6px 0 6px 24px;
+    position: relative;
+}
+
+.focms-feature-preview-light li::before {
+    color: var(--focms-accent);
+    content: "+";
+    font-weight: 700;
+    left: 0;
+    position: absolute;
+    top: 6px;
+}
+
+/* ==========================================================================
+   PULSE TAB - Tablet (480px+)
+   ========================================================================== */
+@media (min-width: 480px) {
+    .focms-stat-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ==========================================================================
+   PULSE TAB - Desktop (768px+)
+   ========================================================================== */
+@media (min-width: 768px) {
+    .focms-stat-card .focms-stat-num {
+        font-size: 36px;
+    }
+    .focms-stat-card .focms-stat-num--sm {
+        font-size: 24px;
+    }
+    .focms-stat-card .focms-stat-num--xs {
+        font-size: 16px;
+    }
+    .focms-deadline-num {
+        font-size: 26px;
+    }
+    .focms-training-num {
+        font-size: 28px;
+    }
+}
