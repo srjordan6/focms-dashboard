@@ -3,7 +3,7 @@
  * Plugin Name: FOCMS Dashboard
  * Plugin URI:  https://github.com/srjordan6/focms-dashboard
  * Description: Front-end dashboards for the Future Officer Candidate Management System. Registers /dashboard (family view) and /john (student portal) routes with strict authentication. Theme-independent — works with any WordPress theme.
- * Version:     0.2.1
+ * Version:     0.2.2
  * Author:      FOCMS
  * Author URI:  https://johnrjordan.com
  * License:     Proprietary
@@ -52,7 +52,7 @@ if (!defined('ABSPATH')) { exit; }
 // CONFIG CONSTANTS - all tenant-specific values here
 // For commercial SaaS, these become per-tenant DB options
 // =============================================================================
-if (!defined('FOCMS_VERSION'))            { define('FOCMS_VERSION',            '0.2.1'); }
+if (!defined('FOCMS_VERSION'))            { define('FOCMS_VERSION',            '0.2.2'); }
 if (!defined('FOCMS_TENANT_ID'))          { define('FOCMS_TENANT_ID',          'jrj'); }
 if (!defined('FOCMS_TENANT_NAME'))        { define('FOCMS_TENANT_NAME',        'John Ray Jordan'); }
 if (!defined('FOCMS_FAMILY_SLUG'))        { define('FOCMS_FAMILY_SLUG',        'dashboard'); }
