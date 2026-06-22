@@ -3,7 +3,7 @@
  * Plugin Name: FOCMS Dashboard
  * Plugin URI:  https://github.com/srjordan6/focms-dashboard
  * Description: Front-end dashboards for the Future Officer Candidate Management System. Registers /dashboard (family view) and /john (student portal) routes with strict authentication. Theme-independent — works with any WordPress theme.
- * Version:     0.2.2
+ * Version:     0.3.0
  * Author:      FOCMS
  * Author URI:  https://johnrjordan.com
  * License:     Proprietary
@@ -52,7 +52,7 @@ if (!defined('ABSPATH')) { exit; }
 // CONFIG CONSTANTS - all tenant-specific values here
 // For commercial SaaS, these become per-tenant DB options
 // =============================================================================
-if (!defined('FOCMS_VERSION'))            { define('FOCMS_VERSION',            '0.2.2'); }
+if (!defined('FOCMS_VERSION'))            { define('FOCMS_VERSION',            '0.3.0'); }
 if (!defined('FOCMS_TENANT_ID'))          { define('FOCMS_TENANT_ID',          'jrj'); }
 if (!defined('FOCMS_TENANT_NAME'))        { define('FOCMS_TENANT_NAME',        'John Ray Jordan'); }
 if (!defined('FOCMS_FAMILY_SLUG'))        { define('FOCMS_FAMILY_SLUG',        'dashboard'); }
@@ -139,3 +139,22 @@ function focms_dashboard_deactivate() {
     flush_rewrite_rules();
 }
 register_deactivation_hook(__FILE__, 'focms_dashboard_deactivate');
+
+/**
+ * Enqueue the FOCMS swim-page hydrator only on the Swimming page (post ID 20).
+ * Added in v0.3.0 to retire the inline JS in the page Custom HTML block.
+ * The asset reads /focms-feed-swim-bests/ and populates the static table skeleton.
+ */
+function focms_dashboard_swim_page_enqueue() {
+    if ( ! is_page( 20 ) ) {
+        return;
+    }
+    wp_enqueue_script(
+        'focms-swim-page',
+        FOCMS_PLUGIN_URL . 'assets/js/focms-swim-page.js',
+        array(),
+        FOCMS_VERSION,
+        true
+    );
+}
+add_action( 'wp_enqueue_scripts', 'focms_dashboard_swim_page_enqueue' );
